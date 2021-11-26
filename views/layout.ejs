@@ -8,8 +8,10 @@
     <title>Moody Music</title>
   </head>
   <body>
-    <%- include('partials/header') %>
-    <main><%- body %></main>
-    <%- include('partials/footer') %>
+    <div id="app">
+      <%- include('partials/header') %>
+      <main class="container"><%- body %></main>
+      <%- include('partials/footer') %>
+    </div>
   </body>
 </html>

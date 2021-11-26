@@ -13,5 +13,11 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/history', (req, res) => {
+  res.render('history')
+})
+
+app.use('/api/v1', require('./api/v1'))
+
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`))
