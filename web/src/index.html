@@ -1,0 +1,17 @@
+<extends src="base.html">
+  <block name="body">
+    <h1>Pick a song/playlist based on your mood.</h1>
+    <div class="mood-slider-container">
+      <h2>How are you feeling today?</h2>
+      <input type="range" />
+    </div>
+    <div class="pick-btn-group">
+      <button class="pick-one">Pick One!</button>
+      <button class="pick-playlist">Gimme Playlist!</button>
+    </div>
+    <div class="picked-list"></div>
+  </block>
+  <block name="scripts">
+    <script src="js/index.js"></script>
+  </block>
+</extends>

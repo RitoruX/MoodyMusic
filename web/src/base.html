@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>Moody Music</title>
   </head>
   <body>
     <div id="app">
-      <%- include('partials/header') %>
-      <main class="container"><%- body %></main>
-      <%- include('partials/footer') %>
+      <include src="./partials/header.html"></include>
+      <main class="container">
+        <block name="body"></block>
+      </main>
+      <include src="./partials/footer.html"></include>
     </div>
-    <%- script %>
+    <block name="scripts"></block>
   </body>
 </html>
