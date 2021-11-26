@@ -4,9 +4,12 @@ const mongoose = require('mongoose')
 const expressLayouts = require('express-ejs-layouts')
 
 const app = express()
-app.set('view engine', 'ejs')
 app.use(expressLayouts)
 app.use(express.static('public'))
+
+app.set('view engine', 'ejs')
+app.set('layout extractScripts', true)
+
 mongoose.connect(process.env.MONGODB_URL)
 
 app.get('/', (req, res) => {

@@ -49,7 +49,7 @@ main {
   align-items: center;
 }
 
-.mood-slider {
+.mood-slider-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,10 +58,20 @@ main {
 .picked-list {
   height: 200px;
   width: 100%;
+  padding: 1rem;
   border: 1px solid black;
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
+  overflow-x: auto;
+}
+
+.song-card {
+  flex-shrink: 0;
+  height: 140px;
+  width: 140px;
+  border: 1px solid red;
 }
 
 footer {
