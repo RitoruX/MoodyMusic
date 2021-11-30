@@ -93,12 +93,6 @@ router.get('/getmusics/:point', async(req, res) => {
         temp_data["pictures"] = random_music.pictures;
         return_data.set(random_music.name, temp_data);
     }
-    // console.log(random_music);
-    // const return_data = new Map([
-    //     ["name", `${random_music.name}`],
-    //     ["url", `${random_music.url}`],
-    //     ["pictures", random_music.pictures]
-    // ]);
     res.status(200).json(Object.fromEntries(return_data));
 });
 
