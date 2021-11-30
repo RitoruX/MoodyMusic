@@ -5,9 +5,9 @@ const axios = require('axios');
 const { json } = require('express');
 const mongoose = require('mongoose');
 
-const API_KEY = 'AIzaSyAkUHYGwbAVsfMFix4FLmBYRC_0lzcSJ1I';
+const API_KEY = process.env.API_KEY;
 const SPREAD_URL = `https://sheets.googleapis.com/v4/spreadsheets/19cTe7BX2O1z9NwgT8zNEkkwNvgAx26EiHZuaTU31VUU/values/A:Z?key=${API_KEY}`;
-const MONGODB_URL = "mongodb+srv://Admin:Admin@cluster0.77mlr.mongodb.net/MoodyMusic?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL;
 
 var users_music = new Map();
 var moody_music = new Map();
