@@ -12,6 +12,7 @@ mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log('Connected to MongoDB'))
 
+app.use('/', require('./loadData'))
 app.use('/api/v1', require('./api/v1'))
 
 const PORT = process.env.PORT || 3000
