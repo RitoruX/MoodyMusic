@@ -30,16 +30,57 @@
                 }
             }
         },
+        "/get-music/{mood-point}": {
+            "post": {
+                "tags": ["API"],
+                "summary": "Get a random music based on mood and current nearby weather.",
+                "response": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/get-musics/{mood-point}": {
+            "post": {
+                "tags": ["API"],
+                "summary": "Get a random playlist based on mood and current nearby weather.",
+                "response": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/mood-tag": {
             "get": {
                 "tags": ["API"],
-                "summary": "Get music genres base on people mood",
+                "summary": "Get genres of music in each mood type.",
                 "response": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#definitions/MoodTag"
-                        }
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users-mood": {
+            "get": {
+                "tags": ["API"],
+                "summary": "Get counting number in each of user's mood",
+                "response": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users-mood-genre": {
+            "get": {
+                "tags": ["API"],
+                "summary": "Get counting of music genres in any user's mood",
+                "response": {
+                    "200": {
+                        "description": "OK"
                     }
                 }
             }
@@ -47,17 +88,8 @@
     },
     "definitions": {
         "MoodData": {
-            "properties": {
-                "genreName": {
-                    "type": "string"
-                },
-                "musics": {
-                    "type": "array",
-                    "music": {
-                        "type": "string"
-                    }
-                }
-            }
+            "type": "object",
+            "$ref": "#definitions/musics"
         },
         "MoodTag": {
             "properties": {
@@ -71,6 +103,9 @@
                     }
                 }
             }
+        },
+        "musics": {
+            "type": "array"
         }
     },
     "schemes": ["http"],
