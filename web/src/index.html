@@ -3,7 +3,11 @@
     <h1>Pick a song/playlist based on your mood.</h1>
     <div class="mood-slider-container">
       <h2>How are you feeling today?</h2>
-      <input type="range" />
+      <div class="mood-display">
+        <p data-mood-emoji>😌</p>
+        <p data-mood-text>Relaxing</p>
+      </div>
+      <input type="range" value="3" min="0" max="4" step="1" />
     </div>
     <div class="pick-btn-group">
       <button class="pick-one">Pick One</button>

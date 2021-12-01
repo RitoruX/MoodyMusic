@@ -1,6 +1,10 @@
 @import 'fonts.css';
 @import 'variables.css';
 
+@import 'pages/main.css';
+@import 'components/footer.css';
+@import 'components/nav.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -29,57 +33,4 @@ ul {
   padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-header {
-  min-height: 15vh;
-  display: flex;
-  align-items: center;
-}
-
-.nav-bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.mood-slider-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.picked-list {
-  height: 200px;
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  overflow-x: auto;
-}
-
-.song-card {
-  flex-shrink: 0;
-  height: 140px;
-  width: 140px;
-  border: 1px solid red;
-}
-
-footer {
-  min-height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 }

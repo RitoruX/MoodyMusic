@@ -17,5 +17,8 @@
     "postcss-import": "^14.0.2",
     "posthtml-extend": "^0.6.1",
     "posthtml-include": "^1.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }

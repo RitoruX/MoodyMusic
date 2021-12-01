@@ -11,25 +11,27 @@ const SPREAD_URL = `https://sheets.googleapis.com/v4/spreadsheets/19cTe7BX2O1z9N
 const MONGODB_URL = process.env.MONGODB_URL
 
 const mood_scaling = ['Sad', 'Axious', 'Erotic', 'Relaxing', 'Joyful']
-var mood_point = 0
-var users_music = new Map()
+let mood_point = 0
 var moody_music = new Map()
 
-router.get('/user_music', async (req, res) => {
+router.get('/user-music', async (req, res) => {
   const response = await axios.get(SPREAD_URL)
   const spreadsheet_data = response.data.values
+  const users_music = {}
   for (const item of spreadsheet_data.slice(1)) {
-    if (users_music.has(item[6])) {
-      users_music.get(item[6]).push(item[7])
+    const mood = item[6]
+    const music = item[7]
+    if (mood in users_music) {
+      users_music[mood] = [...users_music[mood], music]
     } else {
-      users_music.set(item[6], new Array(item[7]))
+      users_music[mood] = [music]
     }
   }
-  res.status(200).json(Object.fromEntries(users_music))
+  res.status(200).json(users_music)
 })
 
 // run first
-router.get('/mood_music', async (req, res) => {
+router.get('/mood-music', async (req, res) => {
   const spread_response = await axios.get(SPREAD_URL)
   const spreadsheet_data = spread_response.data.values
   for (const item of spreadsheet_data.slice(1)) {
@@ -56,7 +58,7 @@ router.get('/mood_music', async (req, res) => {
   res.status(200).json(Object.fromEntries(moody_music))
 })
 
-router.get('/getmusic/:point', async (req, res) => {
+router.get('/get-music/:point', async (req, res) => {
   const ip_location = await axios.get(
     `http://api.ipstack.com/check?access_key=${IP_STACK_KEY}`
   )
@@ -101,7 +103,7 @@ router.get('/getmusic/:point', async (req, res) => {
   res.status(200).json(Object.fromEntries(return_data))
 })
 
-router.get('/getmusics/:point', async (req, res) => {
+router.get('/get-musics/:point', async (req, res) => {
   const ip_location = await axios.get(
     `http://api.ipstack.com/check?access_key=${IP_STACK_KEY}`
   )
