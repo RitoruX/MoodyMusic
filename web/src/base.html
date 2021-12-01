@@ -9,6 +9,9 @@
   </head>
   <body>
     <div id="app">
+      <div class="loading">
+        <include src="./partials/spinner.html"></include>
+      </div>
       <include src="./partials/header.html"></include>
       <main class="container">
         <block name="body"></block>
@@ -16,6 +19,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/axiosInstance.js"></script>
+    <script src="js/loading.js"></script>
     <block name="scripts"></block>
   </body>
 </html>

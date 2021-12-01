@@ -18,7 +18,7 @@
       }
     ],
     "paths": {
-        "/user-music": {
+        "/users-music": {
             "get": {
                 "tags": ["API"],
                 "summary": "Get music name base on people mood",

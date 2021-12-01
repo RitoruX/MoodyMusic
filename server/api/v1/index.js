@@ -6,10 +6,55 @@ const MoodTag = require('../../models/MoodTag')
 const WEATHER_API_KEY = process.env.OPEN_WEATHER_KEY
 const IP_STACK_KEY = process.env.IP_STACK_API
 const API_KEY = process.env.API_KEY
-const SPREAD_URL = `https://sheets.googleapis.com/v4/spreadsheets/19cTe7BX2O1z9NwgT8zNEkkwNvgAx26EiHZuaTU31VUU/values/A:Z?key=${API_KEY}`
+const SHEET_ID = '19cTe7BX2O1z9NwgT8zNEkkwNvgAx26EiHZuaTU31VUU'
+const SHEET_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A:Z?key=${API_KEY}`
 
 const mood_scaling = ['Sad', 'Axious', 'Happy', 'Relaxing', 'Joyful']
 let mood_point = 0
+
+router.get('/users-mood', async (req, res) => {
+  const response = await axios.get(SHEET_URL)
+  const spreadsheetData = response.data.values
+  const moodCount = {}
+
+  for (let i = 1; i < spreadsheetData.length; i++) {
+    const moodName = spreadsheetData[i][5]
+
+    if (moodName in moodCount) {
+      moodCount[moodName] += 1
+    } else {
+      moodCount[moodName] = 1
+    }
+  }
+
+  res.status(200).json(moodCount)
+})
+
+router.get('/users-mood-genre', async (req, res) => {
+  const response = await axios.get(SHEET_URL)
+  const spreadsheetData = response.data.values
+  const moodCountByGenre = {}
+
+  for (let i = 1; i < spreadsheetData.length; i++) {
+    const moodName = spreadsheetData[i][5]
+    const genreName = spreadsheetData[i][7]
+
+    if (moodName in moodCountByGenre) {
+      if (genreName in moodCountByGenre[moodName]) {
+        moodCountByGenre[moodName][genreName] += 1
+      } else {
+        moodCountByGenre[moodName] = {
+          [genreName]: 1,
+          ...moodCountByGenre[moodName]
+        }
+      }
+    } else {
+      moodCountByGenre[moodName] = { [genreName]: 1 }
+    }
+  }
+
+  res.status(200).json(moodCountByGenre)
+})
 
 router.get('/users-music', async (req, res) => {
   const users_data = await MoodData.find({})

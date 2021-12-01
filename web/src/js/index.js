@@ -19,19 +19,20 @@ moodSlider.addEventListener('input', (e) => {
 })
 
 pickOneButton.addEventListener('click', async () => {
-  pickedList.style.justifyContent = 'center'
-
-  const music = await fetchMusicByMoodLevel(moodValue, 'one')
   clearPickedList()
+  pickedList.style.justifyContent = 'center'
+  setLoading()
+  const music = await fetchMusicByMoodLevel(moodValue, 'one')
   const songCard = createSongCard(music)
   pickedList.appendChild(songCard)
+  loadingDone()
 })
 
 pickPlaylistButton.addEventListener('click', async () => {
-  pickedList.style.justifyContent = 'unset'
-
-  const musics = await fetchMusicByMoodLevel(moodValue, 'playlist')
   clearPickedList()
+  pickedList.style.justifyContent = 'unset'
+  setLoading()
+  const musics = await fetchMusicByMoodLevel(moodValue, 'playlist')
 
   for (const music in musics) {
     const song = {
@@ -42,6 +43,7 @@ pickPlaylistButton.addEventListener('click', async () => {
     const songCard = createSongCard(song)
     pickedList.appendChild(songCard)
   }
+  loadingDone()
 })
 
 function clearPickedList() {
