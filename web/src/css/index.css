@@ -1,3 +1,6 @@
+@import 'fonts.css';
+@import 'variables.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +8,6 @@
 }
 
 a {
-  color: black;
   text-decoration: none;
 }
 
@@ -17,6 +19,7 @@ ul {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom, var(--color2), var(--color1));
 }
 
 .container {
@@ -59,7 +62,6 @@ main {
   height: 200px;
   width: 100%;
   padding: 1rem;
-  border: 1px solid black;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -76,6 +78,8 @@ main {
 
 footer {
   min-height: 10vh;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }

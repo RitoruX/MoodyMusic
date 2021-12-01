@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Taviraj:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Taviraj', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  color: var(--color4);
+}
