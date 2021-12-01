@@ -89,7 +89,7 @@ router.get('/get-music/:point', async(req, res) => {
             .then((result) => result.data)
     }
     const music_genres = moody_music[`${mood_scaling[final_mood_point]}`]
-    random_genre = moody_music[Math.floor(Math.random() * music_genres.length)]
+    random_genre = music_genres[Math.floor(Math.random() * music_genres.length)]
     const music_response = await axios
         .get(`https://api.mixcloud.com/search/?q=${random_genre}&type=cloudcast`)
         .then((result) => result.data)
@@ -138,7 +138,7 @@ router.get('/get-musics/:point', async(req, res) => {
     const return_data = new Map()
         // Random algorithm
     for (var i = 0; i < 5; i++) {
-        random_genre = moody_music[Math.floor(Math.random() * music_genres.length)]
+        random_genre = music_genres[Math.floor(Math.random() * music_genres.length)]
         const music_response = await axios
             .get(`https://api.mixcloud.com/search/?q=${random_genre}&type=cloudcast`)
             .then((result) => result.data)
