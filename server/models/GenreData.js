@@ -5,4 +5,4 @@ const GenreData = new Schema({
   musics: [String]
 })
 
-module.exports = model('MusicData', GenreData)
+module.exports = model('GenreData', GenreData)
