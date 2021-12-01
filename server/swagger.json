@@ -1,22 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-      "version": "1.0.0",
-      "title": "MoodyMusic",
-      "description": "MoodyMusic Application API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
+        "version": "1.0.0",
+        "title": "MoodyMusic",
+        "description": "MoodyMusic Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
     },
     "host": "localhost:3000",
     "basePath": "/api/v1",
-    "tags": [
-      {
+    "tags": [{
         "name": "API",
         "description": "API for music and mood"
-      }
-    ],
+    }],
     "paths": {
         "/user-music": {
             "get": {
@@ -31,12 +29,51 @@
                     }
                 }
             }
+        },
+        "/mood-tag": {
+            "get": {
+                "tags": ["API"],
+                "summary": "Get music genres base on people mood",
+                "response": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/MoodTag"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
-        "MoodData": {}
+        "MoodData": {
+            "properties": {
+                "genreName": {
+                    "type": "string"
+                },
+                "musics": {
+                    "type": "array",
+                    "music": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "MoodTag": {
+            "properties": {
+                "moodName": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
     },
     "schemes": ["http"],
     "consumes": ["application/json"],
     "produces": ["application/json"]
-  }
+}
