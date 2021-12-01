@@ -53,6 +53,6 @@ function mapMoodValueToDisplay(value) {
 }
 
 async function fetchMusicByMoodLevel(moodLevel) {
-  const { data } = httpClient.get(`get-music/${moodLevel}`)
+  const { data } = await httpClient.get(`get-music/${moodLevel}`)
   console.log(data)
 }

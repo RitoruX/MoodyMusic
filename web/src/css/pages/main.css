@@ -47,3 +47,17 @@ main {
   width: 140px;
   border: 1px solid red;
 }
+
+.pick-btn-group button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--color4);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  color: var(--color1);
+}
+
+button:hover {
+  background-color: var(--color3);
+}
