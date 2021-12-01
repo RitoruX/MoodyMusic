@@ -2,9 +2,8 @@
   "name": "web",
   "version": "1.0.0",
   "description": "",
-  "source": "src/index.html",
   "scripts": {
-    "dev": "parcel",
+    "dev": "parcel src/*.html",
     "build": "parcel build src/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

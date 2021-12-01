@@ -1,19 +1,24 @@
 <extends src="base.html">
   <block name="body">
-    <h1>Pick a song/playlist based on your mood.</h1>
-    <div class="mood-slider-container">
-      <h2>How are you feeling today?</h2>
-      <div class="mood-display">
-        <p data-mood-emoji>😌</p>
-        <p data-mood-text>Relaxing</p>
+    <div class="picked-page">
+      <h1>Pick a song/playlist based on your mood.</h1>
+      <div class="mood-slider-container">
+        <h2>How are you feeling today?</h2>
+        <div class="mood-display">
+          <p data-mood-emoji>😌</p>
+          <p data-mood-text>Relaxing</p>
+        </div>
+        <div class="slider">
+          <input type="range" value="3" min="0" max="4" step="1" />
+          <div class="slider-animate"></div>
+        </div>
       </div>
-      <input type="range" value="3" min="0" max="4" step="1" />
+      <div class="pick-btn-group">
+        <button class="pick-one">Pick One</button>
+        <button class="pick-playlist">Playlist</button>
+      </div>
+      <div class="picked-list"></div>
     </div>
-    <div class="pick-btn-group">
-      <button class="pick-one">Pick One</button>
-      <button class="pick-playlist">Playlist</button>
-    </div>
-    <div class="picked-list"></div>
   </block>
   <block name="scripts">
     <script src="js/index.js"></script>

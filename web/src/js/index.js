@@ -4,15 +4,18 @@ const pickPlaylistButton = document.querySelector('.pick-playlist')
 const pickedList = document.querySelector('.picked-list')
 const moodEmoji = document.querySelector('[data-mood-emoji]')
 const moodText = document.querySelector('[data-mood-text]')
+const sliderAnimate = document.querySelector('.slider-animate')
 
 const moodEmojis = ['😞', '😰', '😍', '😌', '😊']
 const moodTexts = ['Sad', 'Axious', 'Erotic', 'Relaxing', 'Joyful']
 
 let moodValue = moodSlider.value
+animateSlider(moodValue)
 
 moodSlider.addEventListener('input', (e) => {
   moodValue = e.target.value
   mapMoodValueToDisplay(moodValue)
+  animateSlider(moodValue)
 })
 
 pickOneButton.addEventListener('click', async () => {
@@ -52,7 +55,11 @@ function mapMoodValueToDisplay(value) {
   moodText.innerText = moodTexts[value]
 }
 
-async function fetchMusicByMoodLevel(moodLevel) {
-  const { data } = await httpClient.get(`get-music/${moodLevel}`)
+async function fetchMusicByMoodLevel(value) {
+  const { data } = await httpClient.get(`get-music/${value}`)
   console.log(data)
+}
+
+function animateSlider(value) {
+  sliderAnimate.style.width = `${100 - (value / 4) * 100}%`
 }

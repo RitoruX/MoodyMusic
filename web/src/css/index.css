@@ -2,7 +2,6 @@
 @import 'variables.css';
 
 @import 'pages/main.css';
-@import 'components/footer.css';
 @import 'components/nav.css';
 
 * {

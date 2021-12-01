@@ -1,5 +1,11 @@
 main {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.picked-page {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -12,14 +18,56 @@ main {
   align-items: center;
 }
 
-.mood-slider-container input {
+.slider {
+  position: relative;
+  background: var(--color1);
+  height: 10px;
+  z-index: 1;
+  border-radius: 5px;
   width: 100%;
-  /* margin-top: 3rem; */
+  margin-bottom: 1rem;
+}
+
+.slider input {
+  width: 100%;
+  height: 10px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider input::-webkit-slider-thumb {
+  appearance: none;
+  outline: none;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url('../images/thumb.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slider-animate {
+  pointer-events: none;
+  position: absolute;
+  background: var(--color2);
+  border-radius: 5px;
+  width: 20%;
+  height: 10px;
+  top: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .mood-display {
   text-align: center;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 [data-mood-emoji] {
@@ -46,6 +94,11 @@ main {
   height: 140px;
   width: 140px;
   border: 1px solid red;
+}
+
+.pick-btn-group {
+  display: flex;
+  gap: 1rem;
 }
 
 .pick-btn-group button {
