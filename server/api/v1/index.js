@@ -8,21 +8,22 @@ const API_KEY = process.env.API_KEY
 const SPREAD_URL = `https://sheets.googleapis.com/v4/spreadsheets/19cTe7BX2O1z9NwgT8zNEkkwNvgAx26EiHZuaTU31VUU/values/A:Z?key=${API_KEY}`
 const MONGODB_URL = process.env.MONGODB_URL
 
-const mood_scaling = ['Sad', 'Axious', 'Erotic', 'Relaxing', 'Joyful']
+const mood_scaling = ['Sad', 'Axious', 'Happy', 'Relaxing', 'Joyful']
 let mood_point = 0
 var moody_music = new Map()
 
-router.get('/user-music', async (req, res) => {
-  const response = await axios.get(SPREAD_URL)
-  const spreadsheet_data = response.data.values
-  const users_music = {}
-  for (const item of spreadsheet_data.slice(1)) {
-    const mood = item[6]
-    const music = item[7]
-    if (mood in users_music) {
-      users_music[mood] = [...users_music[mood], music]
-    } else {
-      users_music[mood] = [music]
+router.get('/user-music', async(req, res) => {
+    const response = await axios.get(SPREAD_URL)
+    const spreadsheet_data = response.data.values
+    const users_music = {}
+    for (const item of spreadsheet_data.slice(1)) {
+        const mood = item[5]
+        const music = item[6]
+        if (mood in users_music) {
+            users_music[mood] = [...users_music[mood], music]
+        } else {
+            users_music[mood] = [music]
+        }
     }
   }
   res.status(200).json(users_music)
