@@ -89,11 +89,31 @@ main {
   overflow-x: auto;
 }
 
+.picked-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.picked-list::-webkit-scrollbar-track {
+  background: var(--color2);
+}
+
+.picked-list::-webkit-scrollbar-thumb {
+  background: var(--color1);
+}
+
 .song-card {
   flex-shrink: 0;
   height: 140px;
   width: 140px;
-  border: 1px solid red;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.song-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .pick-btn-group {

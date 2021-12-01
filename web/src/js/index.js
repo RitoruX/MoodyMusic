@@ -19,29 +19,27 @@ moodSlider.addEventListener('input', (e) => {
 })
 
 pickOneButton.addEventListener('click', async () => {
-  clearPickedList()
   pickedList.style.justifyContent = 'center'
 
-  await fetchMusicByMoodLevel(moodValue)
-
-  const songCard = document.createElement('div')
-  songCard.classList.add('song-card')
-
-  songCard.innerText = 'Song'
+  const music = await fetchMusicByMoodLevel(moodValue, 'one')
+  clearPickedList()
+  const songCard = createSongCard(music)
   pickedList.appendChild(songCard)
 })
 
 pickPlaylistButton.addEventListener('click', async () => {
-  clearPickedList()
   pickedList.style.justifyContent = 'unset'
 
-  await fetchMusicByMoodLevel(moodValue)
+  const musics = await fetchMusicByMoodLevel(moodValue, 'playlist')
+  clearPickedList()
 
-  for (let i = 0; i < 10; i++) {
-    const songCard = document.createElement('div')
-    songCard.classList.add('song-card')
-    songCard.innerText = 'Song'
+  for (const music in musics) {
+    const song = {
+      pictures: musics[music].pictures,
+      url: musics[music].url
+    }
 
+    const songCard = createSongCard(song)
     pickedList.appendChild(songCard)
   }
 })
@@ -55,11 +53,24 @@ function mapMoodValueToDisplay(value) {
   moodText.innerText = moodTexts[value]
 }
 
-async function fetchMusicByMoodLevel(value) {
-  const { data } = await httpClient.get(`get-music/${value}`)
-  console.log(data)
+async function fetchMusicByMoodLevel(value, type) {
+  const path = `music${type === 'one' ? '' : 's'}`
+  const { data } = await httpClient.get(`get-${path}/${value}`)
+  return data
 }
 
 function animateSlider(value) {
   sliderAnimate.style.width = `${100 - (value / 4) * 100}%`
+}
+
+function createSongCard(song) {
+  const songCard = document.createElement('a')
+  songCard.classList.add('song-card')
+  const songImage = document.createElement('img')
+  songImage.src = song.pictures['768wx768h']
+
+  songCard.href = song.url
+  songCard.target = '_blank'
+  songCard.appendChild(songImage)
+  return songCard
 }

@@ -51,6 +51,7 @@ router.get('/get-music/:point', async (req, res) => {
   const music_genres = await MoodTag.find({
     moodName: `${mood_scaling[final_mood_point]}`
   })
+
   random_genre =
     music_genres[0].tags[
       Math.floor(Math.random() * music_genres[0].tags.length)
@@ -58,6 +59,7 @@ router.get('/get-music/:point', async (req, res) => {
   const music_response = await axios
     .get(`https://api.mixcloud.com/search/?q=${random_genre}&type=cloudcast`)
     .then((result) => result.data)
+
   random_music =
     music_response.data[Math.floor(Math.random() * music_response.data.length)]
   const return_data = new Map([
