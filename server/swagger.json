@@ -1,0 +1,42 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "MoodyMusic",
+      "description": "MoodyMusic Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "API",
+        "description": "API for music and mood"
+      }
+    ],
+    "paths": {
+        "/user-music": {
+            "get": {
+                "tags": ["API"],
+                "summary": "Get music name base on people mood",
+                "response": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#definitions/MoodData"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "MoodData": {}
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+  }
