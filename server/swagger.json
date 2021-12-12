@@ -113,6 +113,44 @@
                     }
                 }
             }
+        },
+        "/users-mood": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get counting amount of users in each mood.",
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users-mood-genre": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get all genre of music in each user's mood",
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
