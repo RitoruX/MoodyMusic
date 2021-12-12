@@ -28,7 +28,7 @@ Available Moods
 
 - Node.js 14.18.1+
 
-## Dependencies
+## Used Dependencies
 
 - Server
 
