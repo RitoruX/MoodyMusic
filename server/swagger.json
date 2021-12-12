@@ -1,184 +1,177 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "description": "MoodyMusic Application API.",
-    "version": "1.0.0",
-    "title": "MoodyMusic"
-  },
-  "host": "localhost:3000",
-  "basePath": "/api/v1",
-  "tags": [
-    {
-      "name": "API"
+    "swagger": "2.0",
+    "info": {
+        "description": "MoodyMusic Application API.",
+        "version": "1.0.0",
+        "title": "MoodyMusic"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [{
+        "name": "API"
+    }],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users-music": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get user's music for each mood from questionnaire.",
+                "description": "",
+                "operationId": "users-music",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MoodMusic"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-music/{mood-point}": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get a music depend on mood point as parameters.",
+                "parameters": [{
+                    "name": "mood-point",
+                    "in": "path",
+                    "description": "Point that depend on user's mood (Max 4)",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Music"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-musics/{mood-point}": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get a playlist depend on mood point as parameters.",
+                "parameters": [{
+                    "name": "mood-point",
+                    "in": "path",
+                    "description": "Point that depend on user's mood (Max 4)",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Music"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mood-tag": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Get all music tag in each of mood.",
+                "responses": {
+                    "200": {
+                        "description": "successful request",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MoodTag"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "MoodMusic": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "moodName": {
+                    "type": "string"
+                },
+                "musics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "xml": {
+                "name": "MoodMusic"
+            }
+        },
+        "Music": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "pictures": {
+                    "type": "object"
+                }
+            },
+            "xml": {
+                "name": "Music"
+            }
+        },
+        "MoodTag": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "moodName": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "xml": {
+                "name": "MoodTag"
+            }
+        }
     }
-  ],
-  "schemes": [
-    "https",
-    "http"
-  ],
-  "paths": {
-    "/users-music": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Get user's music for each mood from questionnaire.",
-        "description": "",
-        "operationId": "users-music",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "successful request",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MoodMusic"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-music/{mood-point}": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Get a music depend on mood point as parameters.",
-        "parameters": [
-          {
-            "name": "mood-point",
-            "in": "path",
-            "description": "ID of pet to return",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful request",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-musics/{mood-point}": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Get a playlist depend on mood point as parameters.",
-        "parameters": [
-          {
-            "name": "mood-point",
-            "in": "path",
-            "description": "ID of pet to return",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful request",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/mood-tag": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Get all music tag in each of mood.",
-        "responses": {
-          "200": {
-            "description": "successful request",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MoodTag"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "MoodMusic": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "type": "string"
-        },
-        "moodName": {
-          "type": "string"
-        },
-        "musics": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "xml": {
-        "name": "MoodMusic"
-      }
-    },
-    "Music": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "pictures": {
-          "type": "object"
-        }
-      },
-      "xml": {
-        "name": "Music"
-      }
-    },
-    "MoodTag": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "type": "string"
-        },
-        "moodName": {
-          "type": "string"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "xml": {
-        "name": "MoodTag"
-      }
-    }
-  }
 }
